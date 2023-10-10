@@ -3,14 +3,21 @@ import { createBrowserRouter } from "react-router-dom";
 import Home from "./pages/Home";
 import Filme from "./pages/Filme";
 
+import Layout from "./components/Layout";
+
 const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/filme",
-    element: <Filme />,
+    element: <Layout />,
+    children: [
+      {
+        path: "/",
+        element: <Home />,
+      },
+      {
+        path: "/filme/:id",
+        element: <Filme />,
+      },
+    ],
   },
 ]);
 
