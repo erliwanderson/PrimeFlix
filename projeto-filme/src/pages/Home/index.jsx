@@ -1,9 +1,11 @@
 import api from "../../services/api";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import style from "./index.module.css";
 
 function Home() {
   const [filmes, setFilmes] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function loadFilmes() {
@@ -16,13 +18,22 @@ function Home() {
       });
 
       setFilmes(response.data.results.slice(10));
+      setLoading(false);
     }
     loadFilmes();
   }, []);
 
+  if (loading) {
+    return (
+      <>
+        <h2 className={style.loading}>Carregando...</h2>
+      </>
+    );
+  }
+
   return (
-    <div className="container">
-      <div className="lista-filmes">
+    <div className={style.container}>
+      <div className={style.listaFilme}>
         {filmes.map((filme) => {
           return (
             <article key={filme.id}>
