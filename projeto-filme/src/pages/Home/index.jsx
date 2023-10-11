@@ -1,9 +1,40 @@
-import React from "react";
+import api from "../../services/api";
+import { useEffect, useState } from "react";
+
 
 function Home() {
+  const [filmes, setFilmes] = useState([]);
+
+  useEffect(() => {
+    async function loadFilmes() {
+      const response = await api.get("movie/now_playing", {
+        params: {
+          api_key: "6ad6ad40fd5b9b6e225116df8ff6e82e",
+          language: "pt-BR",
+          page: 1,
+        },
+      });
+
+      setFilmes(response.data.results.slice(10));
+    }
+    loadFilmes();
+  }, []);
+
   return (
-    <div>
-      <h1>Pagina home</h1>
+    <div className="container">
+      <div className="lista-filmes">
+        {filmes.map((filme) => {
+          return (
+            <article key={filme.id}>
+              <strong>{filme.title}</strong>
+              <img
+                src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`}
+                alt={filme.title}
+              />
+            </article>
+          );
+        })}
+      </div>
     </div>
   );
 }
