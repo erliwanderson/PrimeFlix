@@ -1,6 +1,6 @@
 import api from "../../services/api";
+import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-
 
 function Home() {
   const [filmes, setFilmes] = useState([]);
@@ -31,6 +31,7 @@ function Home() {
                 src={`https://image.tmdb.org/t/p/original/${filme.poster_path}`}
                 alt={filme.title}
               />
+              <Link to={`/filme/${filme.id}`}>Acessar</Link>
             </article>
           );
         })}
@@ -40,3 +41,5 @@ function Home() {
 }
 
 export default Home;
+
+//movie/now_playing?
