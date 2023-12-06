@@ -21,8 +21,6 @@
 - Pesquisar trailers de filmes no YouTube.
 - Interface amigável e responsiva.
 
-## Resultado final
+## Deploy
 
-<div align= 'center'>
-  <img src="./projeto-filme/src/assets/projeto.jpg" alt="Minha Imagem">
-</div>
+https://projetofilme.vercel.app/
