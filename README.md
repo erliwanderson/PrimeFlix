@@ -21,6 +21,6 @@
 - Pesquisar trailers de filmes no YouTube.
 - Interface amigável e responsiva.
 
-## Deploy
+## Resultado final:
 
-https://projetofilme.vercel.app/
+Deploy [aqui](https://projetofilme.vercel.app/)
